@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 9: Real-Life Scenarios - REST API Course</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-gray-800 text-white fixed h-full">
+            <div class="p-4">
+                <h1 class="text-2xl font-bold mb-8">REST API Course</h1>
+                <nav>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="block py-2 px-4 rounded hover:bg-gray-700">Home</a></li>
+                        <li><a href="day1.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 1: Introduction</a></li>
+                        <li><a href="day2.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 2: GET/POST Requests</a></li>
+                        <li><a href="day3.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 3: HTTP Status Codes</a></li>
+                        <li><a href="day4.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 4: PUT & DELETE</a></li>
+                        <li><a href="day5.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 5: Authentication</a></li>
+                        <li><a href="day6.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 6: Headers & Query Params</a></li>
+                        <li><a href="day7.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 7: Mock API Design</a></li>
+                        <li><a href="day8.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 8: Test Automation</a></li>
+                        <li><a href="day9.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 9: Real-Life Scenarios</a></li>
+                        <li><a href="day10.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 10: Project</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 ml-64 p-8">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-4xl font-bold mb-6">Day 9: Real-Life Scenarios</h1>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">Common API Challenges</h2>
+                    <div class="space-y-6">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-blue-800 mb-2">Rate Limiting</h3>
+                            <p class="mb-2">Preventing abuse and ensuring fair usage of your API.</p>
+                            <pre><code>// Example rate limiting middleware
+const rateLimit = require('express-rate-limit');
+
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100 // limit each IP to 100 requests per windowMs
+});
+
+app.use('/api/', limiter);</code></pre>
+                        </div>
+
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-green-800 mb-2">Caching</h3>
+                            <p class="mb-2">Improving performance by storing frequently accessed data.</p>
+                            <pre><code>// Example caching headers
+app.get('/api/products', (req, res) => {
+    res.setHeader('Cache-Control', 'public, max-age=3600');
+    res.json(products);
+});</code></pre>
+                        </div>
+
+                        <div class="bg-purple-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-purple-800 mb-2">Error Handling</h3>
+                            <p class="mb-2">Proper error handling and logging in production.</p>
+                            <pre><code>// Example error handling middleware
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).json({
+        error: 'Internal Server Error',
+        message: process.env.NODE_ENV === 'development' ? err.message : 'Something went wrong'
+    });
+});</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">API Versioning Strategies</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-yellow-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-yellow-800 mb-2">URL Versioning</h3>
+                            <pre><code>https://api.example.com/v1/users
+https://api.example.com/v2/users</code></pre>
+                        </div>
+                        
+                        <div class="bg-red-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-red-800 mb-2">Header Versioning</h3>
+                            <pre><code>Accept: application/vnd.example.v1+json
+Accept: application/vnd.example.v2+json</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">Security Best Practices</h2>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li>Use HTTPS for all API communications</li>
+                        <li>Implement proper authentication and authorization</li>
+                        <li>Validate and sanitize all input data</li>
+                        <li>Use rate limiting to prevent abuse</li>
+                        <li>Implement CORS policies</li>
+                        <li>Regular security audits and updates</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h2 class="text-2xl font-semibold mb-4">Performance Optimization</h2>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li>Implement caching strategies</li>
+                        <li>Use pagination for large datasets</li>
+                        <li>Optimize database queries</li>
+                        <li>Implement compression</li>
+                        <li>Use CDN for static content</li>
+                        <li>Monitor and analyze performance metrics</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">Practice Questions</h2>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-blue-800 mb-2">Multiple Choice</h3>
+                            <div class="space-y-4">
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">1. What status code would you expect if you try to access a protected resource without authentication?</p>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q1" class="mr-2">
+                                            A. 200 OK
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q1" class="mr-2">
+                                            B. 401 Unauthorized
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q1" class="mr-2">
+                                            C. 404 Not Found
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">2. If an API returns a 429 status code, what does it mean?</p>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q2" class="mr-2">
+                                            A. Too Many Requests
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q2" class="mr-2">
+                                            B. Bad Request
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q2" class="mr-2">
+                                            C. Internal Server Error
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-green-800 mb-2">True/False</h3>
+                            <div class="space-y-4">
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">3. A 404 status code means the resource was not found.</p>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q3" class="mr-2">
+                                            True
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q3" class="mr-2">
+                                            False
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">4. APIs should always return 200 OK, even for errors.</p>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q4" class="mr-2">
+                                            True
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q4" class="mr-2">
+                                            False
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-purple-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-purple-800 mb-2">Practical Exercise</h3>
+                            <div class="space-y-4">
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">5. Using Insomnia or Postman, try the following scenarios:</p>
+                                    <div class="space-y-2">
+                                        <p class="text-sm text-gray-600">a) Make a GET request to a non-existent endpoint. What status code do you get?</p>
+                                        <input type="number" class="border rounded p-2 w-24" placeholder="Status code">
+                                        <p class="text-sm text-gray-600">b) Make a request to a rate-limited endpoint repeatedly. What status code do you get after exceeding the limit?</p>
+                                        <input type="number" class="border rounded p-2 w-24" placeholder="Status code">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="checkAnswers()">
+                            Check Answers
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

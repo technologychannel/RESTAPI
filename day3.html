@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 3: HTTP Status Codes - REST API Course</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <div class="flex flex-1">
+        <!-- Sidebar -->
+        <aside class="sidebar w-72 bg-gradient-to-b from-gray-900 to-gray-800 text-white fixed h-full flex flex-col shadow-xl z-20 transition-all duration-300">
+            <div class="flex items-center justify-between p-6 border-b border-gray-700">
+                <div class="flex items-center space-x-3">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/api-settings.png" alt="Logo" class="w-10 h-10">
+                    <span class="text-2xl font-extrabold tracking-wide">REST API Course</span>
+                </div>
+                <button id="sidebarToggle" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            <!-- Progress Bar -->
+            <div class="px-6 pt-4">
+                <div class="w-full bg-gray-700 rounded-full h-2.5 mb-6">
+                    <div class="bg-blue-500 h-2.5 rounded-full transition-all duration-500" style="width: 30%" id="progressBar"></div>
+                </div>
+            </div>
+            <nav class="flex-1 overflow-y-auto px-2 py-4">
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors font-semibold"><i class="fas fa-home mr-3"></i>Home</a></li>
+                    <li><a href="day1.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-rocket mr-3"></i>Day 1: Introduction</a></li>
+                    <li><a href="day2.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-arrow-down mr-3"></i>Day 2: GET/POST Requests</a></li>
+                    <li><a href="day3.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-signal mr-3"></i>Day 3: HTTP Status Codes</a></li>
+                    <li><a href="day4.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-edit mr-3"></i>Day 4: PUT & DELETE</a></li>
+                    <li><a href="day5.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-lock mr-3"></i>Day 5: Authentication</a></li>
+                    <li><a href="day6.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-sliders-h mr-3"></i>Day 6: Headers & Query Params</a></li>
+                    <li><a href="day7.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-cubes mr-3"></i>Day 7: Mock API Design</a></li>
+                    <li><a href="day8.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-vial mr-3"></i>Day 8: Test Automation</a></li>
+                    <li><a href="day9.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-lightbulb mr-3"></i>Day 9: Real-Life Scenarios</a></li>
+                    <li><a href="day10.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-trophy mr-3"></i>Day 10: Project</a></li>
+                </ul>
+            </nav>
+            <footer class="mt-auto p-4 border-t border-gray-700 text-center text-sm bg-gray-900 bg-opacity-80">
+                <div class="flex justify-center space-x-4 mb-2">
+                    <a href="#" class="hover:text-blue-400"><i class="fab fa-github"></i></a>
+                    <a href="#" class="hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-blue-400"><i class="fas fa-envelope"></i></a>
+                </div>
+                <span>&copy; 2024 REST API Course. All rights reserved.</span>
+            </footer>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 ml-72 p-8 transition-all duration-300 bg-gray-100">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-4xl font-bold mb-6">Day 3: HTTP Status Codes</h1>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">Understanding HTTP Status Codes</h2>
+                    <p class="mb-4">
+                        HTTP status codes are three-digit numbers that indicate the outcome of an HTTP request. They are grouped into five classes:
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-green-800 mb-2">2xx - Success</h3>
+                            <ul class="list-disc pl-6 space-y-1">
+                                <li>200 OK - Request succeeded</li>
+                                <li>201 Created - Resource created</li>
+                                <li>204 No Content - Success but no content</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-blue-800 mb-2">3xx - Redirection</h3>
+                            <ul class="list-disc pl-6 space-y-1">
+                                <li>301 Moved Permanently</li>
+                                <li>302 Found (Temporary Redirect)</li>
+                                <li>304 Not Modified</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-yellow-800 mb-2">4xx - Client Error</h3>
+                            <ul class="list-disc pl-6 space-y-1">
+                                <li>400 Bad Request</li>
+                                <li>401 Unauthorized</li>
+                                <li>403 Forbidden</li>
+                                <li>404 Not Found</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-red-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-red-800 mb-2">5xx - Server Error</h3>
+                            <ul class="list-disc pl-6 space-y-1">
+                                <li>500 Internal Server Error</li>
+                                <li>502 Bad Gateway</li>
+                                <li>503 Service Unavailable</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">Real-Life Examples</h2>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Success Scenario (200 OK)</h3>
+                            <pre><code>GET https://api.example.com/users/1
+Response: 200 OK
+{
+    "id": 1,
+    "name": "John Doe",
+    "email": "john@example.com"
+}</code></pre>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Resource Not Found (404)</h3>
+                            <pre><code>GET https://api.example.com/users/999
+Response: 404 Not Found
+{
+    "error": "User not found",
+    "message": "The requested user does not exist"
+}</code></pre>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-semibold mb-2">Authentication Error (401)</h3>
+                            <pre><code>GET https://api.example.com/protected-resource
+Response: 401 Unauthorized
+{
+    "error": "Unauthorized",
+    "message": "Authentication required"
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">Best Practices</h2>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li>Always use appropriate status codes</li>
+                        <li>Include meaningful error messages</li>
+                        <li>Use consistent error response format</li>
+                        <li>Document all possible status codes in API documentation</li>
+                        <li>Handle errors gracefully on the client side</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h2 class="text-2xl font-semibold mb-4">Practical Exercise</h2>
+                    <p class="mb-4">Using Insomnia, test different endpoints and observe their status codes:</p>
+                    <ol class="list-decimal pl-6 space-y-2">
+                        <li>Test a valid GET request to JSONPlaceholder</li>
+                        <li>Test a non-existent resource</li>
+                        <li>Test an endpoint without authentication</li>
+                        <li>Test with invalid data in POST request</li>
+                    </ol>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1: Introduction to REST APIs - REST API Course</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <div class="flex flex-1">
+        <!-- Sidebar -->
+        <aside class="sidebar w-72 bg-gradient-to-b from-gray-900 to-gray-800 text-white fixed h-full flex flex-col shadow-xl z-20 transition-all duration-300">
+            <div class="flex items-center justify-between p-6 border-b border-gray-700">
+                <div class="flex items-center space-x-3">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/api-settings.png" alt="Logo" class="w-10 h-10">
+                    <span class="text-2xl font-extrabold tracking-wide">REST API Course</span>
+                </div>
+                <button id="sidebarToggle" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            <!-- Progress Bar -->
+            <div class="px-6 pt-4">
+                <div class="w-full bg-gray-700 rounded-full h-2.5 mb-6">
+                    <div class="bg-blue-500 h-2.5 rounded-full transition-all duration-500" style="width: 10%" id="progressBar"></div>
+                </div>
+            </div>
+            <nav class="flex-1 overflow-y-auto px-2 py-4">
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors font-semibold"><i class="fas fa-home mr-3"></i>Home</a></li>
+                    <li><a href="day1.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-rocket mr-3"></i>Day 1: Introduction</a></li>
+                    <li><a href="day2.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-arrow-down mr-3"></i>Day 2: GET/POST Requests</a></li>
+                    <li><a href="day3.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-signal mr-3"></i>Day 3: HTTP Status Codes</a></li>
+                    <li><a href="day4.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-edit mr-3"></i>Day 4: PUT & DELETE</a></li>
+                    <li><a href="day5.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-lock mr-3"></i>Day 5: Authentication</a></li>
+                    <li><a href="day6.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-sliders-h mr-3"></i>Day 6: Headers & Query Params</a></li>
+                    <li><a href="day7.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-cubes mr-3"></i>Day 7: Mock API Design</a></li>
+                    <li><a href="day8.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-vial mr-3"></i>Day 8: Test Automation</a></li>
+                    <li><a href="day9.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-lightbulb mr-3"></i>Day 9: Real-Life Scenarios</a></li>
+                    <li><a href="day10.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-trophy mr-3"></i>Day 10: Project</a></li>
+                </ul>
+            </nav>
+            <footer class="mt-auto p-4 border-t border-gray-700 text-center text-sm bg-gray-900 bg-opacity-80">
+                <div class="flex justify-center space-x-4 mb-2">
+                    <a href="#" class="hover:text-blue-400"><i class="fab fa-github"></i></a>
+                    <a href="#" class="hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-blue-400"><i class="fas fa-envelope"></i></a>
+                </div>
+                <span>&copy; 2024 REST API Course. All rights reserved.</span>
+            </footer>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 ml-72 p-8 transition-all duration-300 bg-gray-100">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-4xl font-bold mb-6">Day 1: Introduction to REST APIs</h1>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">What is a REST API?</h2>
+                    <p class="mb-4">
+                        REST (Representational State Transfer) is an architectural style for designing networked applications. 
+                        It relies on a stateless, client-server communication protocol - typically HTTP.
+                    </p>
+                    <p class="mb-4">
+                        REST APIs are designed to take advantage of existing protocols. While REST can be used over nearly any protocol, 
+                        it usually takes advantage of HTTP when used for Web APIs.
+                    </p>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">HTTP Basics</h2>
+                    <p class="mb-4">HTTP (Hypertext Transfer Protocol) is the foundation of data communication for the World Wide Web.</p>
+                    
+                    <h3 class="text-xl font-semibold mb-2">HTTP Methods:</h3>
+                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                        <li><strong>GET</strong> - Retrieve data from a server</li>
+                        <li><strong>POST</strong> - Send data to a server to create a resource</li>
+                        <li><strong>PUT</strong> - Update an existing resource</li>
+                        <li><strong>DELETE</strong> - Remove a resource</li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold mb-2">HTTP Status Codes:</h3>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li><strong>2xx</strong> - Success (200 OK, 201 Created)</li>
+                        <li><strong>3xx</strong> - Redirection (301 Moved Permanently)</li>
+                        <li><strong>4xx</strong> - Client Error (404 Not Found, 400 Bad Request)</li>
+                        <li><strong>5xx</strong> - Server Error (500 Internal Server Error)</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">JSON Format</h2>
+                    <p class="mb-4">
+                        JSON (JavaScript Object Notation) is a lightweight data-interchange format that is easy for humans to read and write 
+                        and easy for machines to parse and generate.
+                    </p>
+                    
+                    <pre><code>{
+    "name": "John Doe",
+    "age": 30,
+    "email": "john@example.com",
+    "address": {
+        "street": "123 Main St",
+        "city": "New York"
+    }
+}</code></pre>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">REST vs SOAP</h2>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full">
+                            <thead>
+                                <tr class="bg-gray-100">
+                                    <th class="py-2 px-4">Feature</th>
+                                    <th class="py-2 px-4">REST</th>
+                                    <th class="py-2 px-4">SOAP</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="py-2 px-4">Protocol</td>
+                                    <td class="py-2 px-4">HTTP</td>
+                                    <td class="py-2 px-4">HTTP, SMTP, TCP</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-4">Data Format</td>
+                                    <td class="py-2 px-4">JSON, XML</td>
+                                    <td class="py-2 px-4">XML</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-4">Performance</td>
+                                    <td class="py-2 px-4">Faster</td>
+                                    <td class="py-2 px-4">Slower</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-4">Learning Curve</td>
+                                    <td class="py-2 px-4">Easier</td>
+                                    <td class="py-2 px-4">Steeper</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">Practical Exercise</h2>
+                    <p class="mb-4">
+                        Let's make our first API call using Insomnia:
+                    </p>
+                    <ol class="list-decimal pl-6 space-y-2">
+                        <li>Open Insomnia</li>
+                        <li>Create a new GET request</li>
+                        <li>Enter URL: https://jsonplaceholder.typicode.com/posts/1</li>
+                        <li>Send the request</li>
+                        <li>Observe the response</li>
+                    </ol>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">Practice Questions</h2>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-blue-800 mb-2">Multiple Choice</h3>
+                            <div class="space-y-4">
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">1. What does REST stand for?</p>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q1" class="mr-2">
+                                            A. Representational State Transfer
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q1" class="mr-2">
+                                            B. Remote State Transfer
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q1" class="mr-2">
+                                            C. Representational Server Transfer
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">2. Which HTTP method is used to create a new resource?</p>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q2" class="mr-2">
+                                            A. GET
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q2" class="mr-2">
+                                            B. POST
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q2" class="mr-2">
+                                            C. PUT
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-green-800 mb-2">True/False</h3>
+                            <div class="space-y-4">
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">3. REST APIs must use JSON format for data exchange.</p>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q3" class="mr-2">
+                                            True
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q3" class="mr-2">
+                                            False
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">4. HTTP is a stateless protocol.</p>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q4" class="mr-2">
+                                            True
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q4" class="mr-2">
+                                            False
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-purple-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-purple-800 mb-2">Practical Exercise</h3>
+                            <div class="space-y-4">
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">5. Using Insomnia, make a GET request to https://jsonplaceholder.typicode.com/users and answer:</p>
+                                    <div class="space-y-2">
+                                        <p class="text-sm text-gray-600">a) How many users are returned?</p>
+                                        <input type="number" class="border rounded p-2 w-24">
+                                        <p class="text-sm text-gray-600">b) What is the email of the first user?</p>
+                                        <input type="text" class="border rounded p-2 w-full">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="checkAnswers()">
+                            Check Answers
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

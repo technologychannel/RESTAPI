@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 10: Final Project - REST API Course</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-gray-800 text-white fixed h-full">
+            <div class="p-4">
+                <h1 class="text-2xl font-bold mb-8">REST API Course</h1>
+                <nav>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="block py-2 px-4 rounded hover:bg-gray-700">Home</a></li>
+                        <li><a href="day1.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 1: Introduction</a></li>
+                        <li><a href="day2.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 2: GET/POST Requests</a></li>
+                        <li><a href="day3.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 3: HTTP Status Codes</a></li>
+                        <li><a href="day4.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 4: PUT & DELETE</a></li>
+                        <li><a href="day5.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 5: Authentication</a></li>
+                        <li><a href="day6.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 6: Headers & Query Params</a></li>
+                        <li><a href="day7.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 7: Mock API Design</a></li>
+                        <li><a href="day8.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 8: Test Automation</a></li>
+                        <li><a href="day9.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 9: Real-Life Scenarios</a></li>
+                        <li><a href="day10.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 10: Project</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 ml-64 p-8">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-4xl font-bold mb-6">Day 10: Final Project</h1>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">Project Overview</h2>
+                    <p class="mb-4">
+                        Create a complete REST API for a Task Management System. This project will incorporate all the concepts learned throughout the course.
+                    </p>
+                    
+                    <h3 class="text-xl font-semibold mb-2">Project Requirements:</h3>
+                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                        <li>User authentication and authorization</li>
+                        <li>Task CRUD operations</li>
+                        <li>Task categorization and filtering</li>
+                        <li>User profile management</li>
+                        <li>API documentation</li>
+                        <li>Testing and validation</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">API Endpoints</h2>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-blue-800 mb-2">Authentication</h3>
+                            <pre><code>POST /api/auth/register
+POST /api/auth/login
+POST /api/auth/logout
+GET /api/auth/me</code></pre>
+                        </div>
+
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-green-800 mb-2">Tasks</h3>
+                            <pre><code>GET /api/tasks
+GET /api/tasks/:id
+POST /api/tasks
+PUT /api/tasks/:id
+DELETE /api/tasks/:id
+GET /api/tasks/category/:category
+GET /api/tasks/status/:status</code></pre>
+                        </div>
+
+                        <div class="bg-purple-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-purple-800 mb-2">Users</h3>
+                            <pre><code>GET /api/users
+GET /api/users/:id
+PUT /api/users/:id
+DELETE /api/users/:id</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">Data Models</h2>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-yellow-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-yellow-800 mb-2">Task Model</h3>
+                            <pre><code>{
+    "id": "string",
+    "title": "string",
+    "description": "string",
+    "status": "enum",
+    "category": "string",
+    "dueDate": "date",
+    "createdBy": "string",
+    "assignedTo": "string",
+    "createdAt": "date",
+    "updatedAt": "date"
+}</code></pre>
+                        </div>
+
+                        <div class="bg-red-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-red-800 mb-2">User Model</h3>
+                            <pre><code>{
+    "id": "string",
+    "name": "string",
+    "email": "string",
+    "password": "string",
+    "role": "enum",
+    "createdAt": "date",
+    "updatedAt": "date"
+}</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h2 class="text-2xl font-semibold mb-4">Project Deliverables</h2>
+                    <ol class="list-decimal pl-6 space-y-2">
+                        <li>Complete API implementation with all endpoints</li>
+                        <li>Authentication system with JWT</li>
+                        <li>Database schema and migrations</li>
+                        <li>API documentation using Swagger/OpenAPI</li>
+                        <li>Test suite with Postman/Newman</li>
+                        <li>Error handling and validation</li>
+                        <li>Rate limiting and security measures</li>
+                        <li>Deployment configuration</li>
+                    </ol>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">Practice Questions & Final Review</h2>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-blue-800 mb-2">Multiple Choice</h3>
+                            <div class="space-y-4">
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">1. Which HTTP method is used to partially update a resource?</p>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q1" class="mr-2">
+                                            A. PUT
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q1" class="mr-2">
+                                            B. PATCH
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q1" class="mr-2">
+                                            C. POST
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">2. What is the main advantage of using RESTful APIs?</p>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q2" class="mr-2">
+                                            A. Platform independence
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q2" class="mr-2">
+                                            B. Scalability
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q2" class="mr-2">
+                                            C. Both A and B
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-green-800 mb-2">True/False</h3>
+                            <div class="space-y-4">
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">3. REST APIs must always use XML for data exchange.</p>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q3" class="mr-2">
+                                            True
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q3" class="mr-2">
+                                            False
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">4. Status code 201 means a resource was successfully created.</p>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q4" class="mr-2">
+                                            True
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q4" class="mr-2">
+                                            False
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-purple-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-purple-800 mb-2">Practical Exercise</h3>
+                            <div class="space-y-4">
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">5. As part of your final project, you built a REST API. What is the endpoint to get all users if your base URL is <span class='font-mono'>https://api.example.com</span>?</p>
+                                    <input type="text" class="border rounded p-2 w-full" placeholder="Enter the endpoint">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="checkAnswers()">
+                            Check Answers
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

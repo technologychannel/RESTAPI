@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 7: Mock API Design - REST API Course</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-gray-800 text-white fixed h-full">
+            <div class="p-4">
+                <h1 class="text-2xl font-bold mb-8">REST API Course</h1>
+                <nav>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="block py-2 px-4 rounded hover:bg-gray-700">Home</a></li>
+                        <li><a href="day1.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 1: Introduction</a></li>
+                        <li><a href="day2.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 2: GET/POST Requests</a></li>
+                        <li><a href="day3.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 3: HTTP Status Codes</a></li>
+                        <li><a href="day4.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 4: PUT & DELETE</a></li>
+                        <li><a href="day5.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 5: Authentication</a></li>
+                        <li><a href="day6.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 6: Headers & Query Params</a></li>
+                        <li><a href="day7.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 7: Mock API Design</a></li>
+                        <li><a href="day8.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 8: Test Automation</a></li>
+                        <li><a href="day9.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 9: Real-Life Scenarios</a></li>
+                        <li><a href="day10.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 10: Project</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 ml-64 p-8">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-4xl font-bold mb-6">Day 7: Mock API Design</h1>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">What is a Mock API?</h2>
+                    <p class="mb-4">
+                        A mock API is a simulated version of a real API that mimics its behavior. It's used for testing and development when the actual API is not available or not ready.
+                    </p>
+                    
+                    <h3 class="text-xl font-semibold mb-2">Benefits of Mock APIs:</h3>
+                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                        <li>Parallel development of frontend and backend</li>
+                        <li>Testing without affecting production data</li>
+                        <li>Simulating different scenarios and responses</li>
+                        <li>Reducing dependencies during development</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">Popular Mock API Tools</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-blue-800 mb-2">JSON Server</h3>
+                            <p class="mb-2">A simple tool to create a REST API with zero coding.</p>
+                            <pre><code>npm install -g json-server
+json-server --watch db.json</code></pre>
+                        </div>
+                        
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-green-800 mb-2">Mockoon</h3>
+                            <p class="mb-2">A desktop application to create mock APIs with a user-friendly interface.</p>
+                            <pre><code># Download from mockoon.com
+# Create routes and responses visually</code></pre>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-purple-800 mb-2">Postman Mock Server</h3>
+                            <p class="mb-2">Create mock servers directly from your Postman collections.</p>
+                            <pre><code># Create collection
+# Generate mock server
+# Share mock server URL</code></pre>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-yellow-800 mb-2">MSW (Mock Service Worker)</h3>
+                            <p class="mb-2">API mocking library for browser and Node.js.</p>
+                            <pre><code>npm install msw --save-dev
+# Create mock handlers
+# Setup worker</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">Creating a Mock API with JSON Server</h2>
+                    
+                    <h3 class="text-xl font-semibold mb-2">Step 1: Create db.json</h3>
+                    <pre><code>{
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com"
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "jane@example.com"
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "First Post",
+      "body": "This is the first post",
+      "userId": 1
+    }
+  ]
+}</code></pre>
+
+                    <h3 class="text-xl font-semibold mb-2 mt-4">Step 2: Start the Server</h3>
+                    <pre><code>json-server --watch db.json --port 3000</code></pre>
+
+                    <h3 class="text-xl font-semibold mb-2 mt-4">Available Endpoints:</h3>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li>GET /users - Get all users</li>
+                        <li>GET /users/1 - Get user with id 1</li>
+                        <li>POST /users - Create new user</li>
+                        <li>PUT /users/1 - Update user</li>
+                        <li>DELETE /users/1 - Delete user</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h2 class="text-2xl font-semibold mb-4">Practical Exercise</h2>
+                    <p class="mb-4">Create your own mock API:</p>
+                    <ol class="list-decimal pl-6 space-y-2">
+                        <li>Install JSON Server</li>
+                        <li>Create a db.json file with sample data</li>
+                        <li>Start the mock server</li>
+                        <li>Test all CRUD operations using Insomnia</li>
+                        <li>Add custom routes and responses</li>
+                        <li>Implement error scenarios</li>
+                    </ol>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">Practice Questions</h2>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-blue-800 mb-2">Multiple Choice</h3>
+                            <div class="space-y-4">
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">1. What is the main purpose of a mock API?</p>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q1" class="mr-2">
+                                            A. To test authentication
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q1" class="mr-2">
+                                            B. To simulate API responses without a real backend
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q1" class="mr-2">
+                                            C. To deploy production APIs
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">2. Which tool is commonly used for creating mock APIs?</p>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q2" class="mr-2">
+                                            A. Insomnia
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q2" class="mr-2">
+                                            B. Postman
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q2" class="mr-2">
+                                            C. Both A and B
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-green-800 mb-2">True/False</h3>
+                            <div class="space-y-4">
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">3. Mock APIs can help frontend developers work independently of backend teams.</p>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q3" class="mr-2">
+                                            True
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q3" class="mr-2">
+                                            False
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">4. Mock APIs always return real data from a database.</p>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q4" class="mr-2">
+                                            True
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q4" class="mr-2">
+                                            False
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-purple-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-purple-800 mb-2">Practical Exercise</h3>
+                            <div class="space-y-4">
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">5. Using a mock API tool (like Postman or Insomnia):</p>
+                                    <div class="space-y-2">
+                                        <p class="text-sm text-gray-600">a) What status code do you get for a successful GET request to your mock endpoint?</p>
+                                        <input type="number" class="border rounded p-2 w-24" placeholder="Status code">
+                                        <p class="text-sm text-gray-600">b) What is a sample JSON response you defined?</p>
+                                        <input type="text" class="border rounded p-2 w-full" placeholder="Paste a sample JSON or key value">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="checkAnswers()">
+                            Check Answers
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

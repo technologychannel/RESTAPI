@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 8: Test Automation - REST API Course</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-gray-800 text-white fixed h-full">
+            <div class="p-4">
+                <h1 class="text-2xl font-bold mb-8">REST API Course</h1>
+                <nav>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="block py-2 px-4 rounded hover:bg-gray-700">Home</a></li>
+                        <li><a href="day1.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 1: Introduction</a></li>
+                        <li><a href="day2.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 2: GET/POST Requests</a></li>
+                        <li><a href="day3.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 3: HTTP Status Codes</a></li>
+                        <li><a href="day4.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 4: PUT & DELETE</a></li>
+                        <li><a href="day5.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 5: Authentication</a></li>
+                        <li><a href="day6.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 6: Headers & Query Params</a></li>
+                        <li><a href="day7.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 7: Mock API Design</a></li>
+                        <li><a href="day8.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 8: Test Automation</a></li>
+                        <li><a href="day9.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 9: Real-Life Scenarios</a></li>
+                        <li><a href="day10.html" class="block py-2 px-4 rounded hover:bg-gray-700">Day 10: Project</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-1 ml-64 p-8">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-4xl font-bold mb-6">Day 8: Test Automation</h1>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">Types of API Testing</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-blue-800 mb-2">Functional Testing</h3>
+                            <ul class="list-disc pl-6 space-y-1">
+                                <li>Unit Testing</li>
+                                <li>Integration Testing</li>
+                                <li>End-to-End Testing</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-green-800 mb-2">Non-Functional Testing</h3>
+                            <ul class="list-disc pl-6 space-y-1">
+                                <li>Performance Testing</li>
+                                <li>Security Testing</li>
+                                <li>Load Testing</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">Popular Testing Tools</h2>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-purple-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-purple-800 mb-2">Postman</h3>
+                            <p class="mb-2">API testing and automation platform with a user-friendly interface.</p>
+                            <pre><code>// Example Postman test script
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("Response time is less than 200ms", function () {
+    pm.expect(pm.response.responseTime).to.be.below(200);
+});</code></pre>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-yellow-800 mb-2">Jest + Supertest</h3>
+                            <p class="mb-2">JavaScript testing framework for API testing.</p>
+                            <pre><code>// Example Jest test
+const request = require('supertest');
+const app = require('./app');
+
+test('GET /users returns 200', async () => {
+    const response = await request(app)
+        .get('/users')
+        .expect(200);
+    
+    expect(response.body).toHaveLength(2);
+});</code></pre>
+                        </div>
+                        
+                        <div class="bg-red-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-red-800 mb-2">Cypress</h3>
+                            <p class="mb-2">End-to-end testing framework that can test APIs.</p>
+                            <pre><code>// Example Cypress test
+describe('API Tests', () => {
+    it('should create a new user', () => {
+        cy.request('POST', '/users', {
+            name: 'John Doe',
+            email: 'john@example.com'
+        }).then((response) => {
+            expect(response.status).to.eq(201);
+            expect(response.body).to.have.property('id');
+        });
+    });
+});</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">Test Automation Best Practices</h2>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li>Write independent tests</li>
+                        <li>Use meaningful test names</li>
+                        <li>Test both success and failure scenarios</li>
+                        <li>Validate response schemas</li>
+                        <li>Test performance and response times</li>
+                        <li>Use environment variables for configuration</li>
+                        <li>Implement continuous integration</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h2 class="text-2xl font-semibold mb-4">Practical Exercise</h2>
+                    <p class="mb-4">Create automated tests for your mock API:</p>
+                    <ol class="list-decimal pl-6 space-y-2">
+                        <li>Set up a testing environment with Postman</li>
+                        <li>Create test collections for different endpoints</li>
+                        <li>Write tests for:
+                            <ul class="list-disc pl-6 mt-2">
+                                <li>Status codes</li>
+                                <li>Response times</li>
+                                <li>Response body structure</li>
+                                <li>Error handling</li>
+                            </ul>
+                        </li>
+                        <li>Run tests in different environments</li>
+                        <li>Set up automated test runs</li>
+                    </ol>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">Practice Questions</h2>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-blue-800 mb-2">Multiple Choice</h3>
+                            <div class="space-y-4">
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">1. Which tool is commonly used for API test automation?</p>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q1" class="mr-2">
+                                            A. Postman
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q1" class="mr-2">
+                                            B. JMeter
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q1" class="mr-2">
+                                            C. Both A and B
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">2. What is the main benefit of automating API tests?</p>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q2" class="mr-2">
+                                            A. Faster feedback and regression testing
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q2" class="mr-2">
+                                            B. Manual effort increases
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q2" class="mr-2">
+                                            C. APIs become slower
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-green-800 mb-2">True/False</h3>
+                            <div class="space-y-4">
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">3. Automated API tests can be run as part of a CI/CD pipeline.</p>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q3" class="mr-2">
+                                            True
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q3" class="mr-2">
+                                            False
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">4. API test automation is only useful for large projects.</p>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q4" class="mr-2">
+                                            True
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q4" class="mr-2">
+                                            False
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-purple-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-purple-800 mb-2">Practical Exercise</h3>
+                            <div class="space-y-4">
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">5. Using Postman or another tool, automate a test for a GET request to https://jsonplaceholder.typicode.com/posts/1:</p>
+                                    <div class="space-y-2">
+                                        <p class="text-sm text-gray-600">a) What status code should your test expect?</p>
+                                        <input type="number" class="border rounded p-2 w-24" placeholder="Status code">
+                                        <p class="text-sm text-gray-600">b) What is the value of the title field in the response?</p>
+                                        <input type="text" class="border rounded p-2 w-full" placeholder="Title value">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="checkAnswers()">
+                            Check Answers
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

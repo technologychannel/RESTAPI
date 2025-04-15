@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REST API Course</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <div class="flex flex-1">
+        <!-- Sidebar -->
+        <aside class="sidebar w-72 bg-gradient-to-b from-gray-900 to-gray-800 text-white fixed h-full flex flex-col shadow-xl z-20 transition-all duration-300">
+            <div class="flex items-center justify-between p-6 border-b border-gray-700">
+                <div class="flex items-center space-x-3">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/api-settings.png" alt="Logo" class="w-10 h-10">
+                    <span class="text-2xl font-extrabold tracking-wide">REST API Course</span>
+                </div>
+                <button id="sidebarToggle" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            <!-- Progress Bar -->
+            <div class="px-6 pt-4">
+                <div class="w-full bg-gray-700 rounded-full h-2.5 mb-6">
+                    <div class="bg-blue-500 h-2.5 rounded-full transition-all duration-500" style="width: 10%" id="progressBar"></div>
+                </div>
+            </div>
+            <nav class="flex-1 overflow-y-auto px-2 py-4">
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors font-semibold"><i class="fas fa-home mr-3"></i>Home</a></li>
+                    <li><a href="day1.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-rocket mr-3"></i>Day 1: Introduction</a></li>
+                    <li><a href="day2.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-arrow-down mr-3"></i>Day 2: GET/POST Requests</a></li>
+                    <li><a href="day3.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-signal mr-3"></i>Day 3: HTTP Status Codes</a></li>
+                    <li><a href="day4.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-edit mr-3"></i>Day 4: PUT & DELETE</a></li>
+                    <li><a href="day5.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-lock mr-3"></i>Day 5: Authentication</a></li>
+                    <li><a href="day6.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-sliders-h mr-3"></i>Day 6: Headers & Query Params</a></li>
+                    <li><a href="day7.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-cubes mr-3"></i>Day 7: Mock API Design</a></li>
+                    <li><a href="day8.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-vial mr-3"></i>Day 8: Test Automation</a></li>
+                    <li><a href="day9.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-lightbulb mr-3"></i>Day 9: Real-Life Scenarios</a></li>
+                    <li><a href="day10.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-trophy mr-3"></i>Day 10: Project</a></li>
+                </ul>
+            </nav>
+            <footer class="mt-auto p-4 border-t border-gray-700 text-center text-sm bg-gray-900 bg-opacity-80">
+                <div class="flex justify-center space-x-4 mb-2">
+                    <a href="#" class="hover:text-blue-400"><i class="fab fa-github"></i></a>
+                    <a href="#" class="hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-blue-400"><i class="fas fa-envelope"></i></a>
+                </div>
+                <span>&copy; 2024 REST API Course. All rights reserved.</span>
+            </footer>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 ml-72 p-8 transition-all duration-300 bg-gray-100">
+            <!-- Hero Section -->
+            <section class="bg-white rounded-2xl shadow-xl p-10 mb-10 flex flex-col md:flex-row items-center justify-between border border-gray-200">
+                <div>
+                    <h1 class="text-5xl font-extrabold text-gray-900 mb-4">Master REST APIs</h1>
+                    <p class="text-xl text-gray-700 mb-6">A 10-day hands-on course for beginners. Build, test, and master real-world APIs with modern tools and best practices.</p>
+                    <a href="day1.html" class="inline-block bg-blue-600 text-white font-bold px-8 py-3 rounded-lg shadow-lg hover:bg-blue-700 transition-transform">Start Learning Now</a>
+                </div>
+                <img src="https://img.icons8.com/ios-filled/100/4F8EF7/api.png" alt="API Illustration" class="w-40 h-40 md:ml-10 mt-8 md:mt-0">
+            </section>
+
+            <!-- Course Overview -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">What You Will Get</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-blue-500">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-900">Personalized Classes</h3>
+                        <p class="text-gray-700">Small group, hands-on training with real-world projects and feedback.</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-blue-400">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-900">Practical Skills</h3>
+                        <p class="text-gray-700">Learn by doing: build, test, and document APIs using industry tools.</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-gray-700">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-900">Modern Tools</h3>
+                        <p class="text-gray-700">Work with Insomnia, Postman, Swagger, and more. All tools are beginner-friendly.</p>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg p-6 border-l-4 border-gray-500">
+                        <h3 class="text-xl font-semibold mb-2 text-gray-900">Project-Based</h3>
+                        <p class="text-gray-700">End the course with a complete API project and portfolio-ready skills.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Course Schedule -->
+            <section class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Course Schedule</h2>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white rounded-xl shadow-lg border border-gray-200">
+                        <thead class="bg-gray-100">
+                            <tr>
+                                <th class="py-3 px-6 text-left font-semibold text-gray-900">Day</th>
+                                <th class="py-3 px-6 text-left font-semibold text-gray-900">Topic</th>
+                                <th class="py-3 px-6 text-left font-semibold text-gray-900">Activities</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b">
+                                <td class="py-3 px-6">1</td>
+                                <td class="py-3 px-6">Introduction to REST APIs</td>
+                                <td class="py-3 px-6">Overview, HTTP basics, JSON, REST vs SOAP</td>
+                            </tr>
+                            <tr class="border-b bg-gray-50">
+                                <td class="py-3 px-6">2</td>
+                                <td class="py-3 px-6">GET & POST Requests</td>
+                                <td class="py-3 px-6">Hands-on with public APIs</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-3 px-6">3</td>
+                                <td class="py-3 px-6">HTTP Status Codes</td>
+                                <td class="py-3 px-6">Testing and debugging</td>
+                            </tr>
+                            <tr class="border-b bg-gray-50">
+                                <td class="py-3 px-6">4</td>
+                                <td class="py-3 px-6">PUT & DELETE</td>
+                                <td class="py-3 px-6">Update and remove resources</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-3 px-6">5</td>
+                                <td class="py-3 px-6">Authentication</td>
+                                <td class="py-3 px-6">API keys, tokens, OAuth</td>
+                            </tr>
+                            <tr class="border-b bg-gray-50">
+                                <td class="py-3 px-6">6</td>
+                                <td class="py-3 px-6">Headers & Query Params</td>
+                                <td class="py-3 px-6">Customizing requests</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-3 px-6">7</td>
+                                <td class="py-3 px-6">Mock API Design</td>
+                                <td class="py-3 px-6">Design and simulate APIs</td>
+                            </tr>
+                            <tr class="border-b bg-gray-50">
+                                <td class="py-3 px-6">8</td>
+                                <td class="py-3 px-6">Test Automation</td>
+                                <td class="py-3 px-6">Automate API tests</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="py-3 px-6">9</td>
+                                <td class="py-3 px-6">Real-Life Scenarios</td>
+                                <td class="py-3 px-6">Troubleshooting, best practices</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 px-6">10</td>
+                                <td class="py-3 px-6">Project</td>
+                                <td class="py-3 px-6">Build and test a complete API</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

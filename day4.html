@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 4: PUT & DELETE Requests - REST API Course</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <div class="flex flex-1">
+        <!-- Sidebar -->
+        <aside class="sidebar w-72 bg-gradient-to-b from-gray-900 to-gray-800 text-white fixed h-full flex flex-col shadow-xl z-20 transition-all duration-300">
+            <div class="flex items-center justify-between p-6 border-b border-gray-700">
+                <div class="flex items-center space-x-3">
+                    <img src="https://img.icons8.com/ios-filled/50/ffffff/api-settings.png" alt="Logo" class="w-10 h-10">
+                    <span class="text-2xl font-extrabold tracking-wide">REST API Course</span>
+                </div>
+                <button id="sidebarToggle" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            <!-- Progress Bar -->
+            <div class="px-6 pt-4">
+                <div class="w-full bg-gray-700 rounded-full h-2.5 mb-6">
+                    <div class="bg-blue-500 h-2.5 rounded-full transition-all duration-500" style="width: 40%" id="progressBar"></div>
+                </div>
+            </div>
+            <nav class="flex-1 overflow-y-auto px-2 py-4">
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors font-semibold"><i class="fas fa-home mr-3"></i>Home</a></li>
+                    <li><a href="day1.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-rocket mr-3"></i>Day 1: Introduction</a></li>
+                    <li><a href="day2.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-arrow-down mr-3"></i>Day 2: GET/POST Requests</a></li>
+                    <li><a href="day3.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-signal mr-3"></i>Day 3: HTTP Status Codes</a></li>
+                    <li><a href="day4.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-edit mr-3"></i>Day 4: PUT & DELETE</a></li>
+                    <li><a href="day5.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-lock mr-3"></i>Day 5: Authentication</a></li>
+                    <li><a href="day6.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-sliders-h mr-3"></i>Day 6: Headers & Query Params</a></li>
+                    <li><a href="day7.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-cubes mr-3"></i>Day 7: Mock API Design</a></li>
+                    <li><a href="day8.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-vial mr-3"></i>Day 8: Test Automation</a></li>
+                    <li><a href="day9.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-lightbulb mr-3"></i>Day 9: Real-Life Scenarios</a></li>
+                    <li><a href="day10.html" class="flex items-center py-2 px-4 rounded-lg hover:bg-gray-700 transition-colors"><i class="fas fa-trophy mr-3"></i>Day 10: Project</a></li>
+                </ul>
+            </nav>
+            <footer class="mt-auto p-4 border-t border-gray-700 text-center text-sm bg-gray-900 bg-opacity-80">
+                <div class="flex justify-center space-x-4 mb-2">
+                    <a href="#" class="hover:text-blue-400"><i class="fab fa-github"></i></a>
+                    <a href="#" class="hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-blue-400"><i class="fas fa-envelope"></i></a>
+                </div>
+                <span>&copy; 2024 REST API Course. All rights reserved.</span>
+            </footer>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 ml-72 p-8 transition-all duration-300 bg-gray-100">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-4xl font-bold mb-6">Day 4: PUT & DELETE Requests</h1>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">PUT Requests</h2>
+                    <p class="mb-4">
+                        PUT requests are used to update existing resources. They are idempotent, meaning multiple identical requests should have the same effect as a single request.
+                    </p>
+                    
+                    <h3 class="text-xl font-semibold mb-2">Key Characteristics:</h3>
+                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                        <li>Updates the entire resource</li>
+                        <li>Requires the complete resource representation</li>
+                        <li>Idempotent (safe to retry)</li>
+                        <li>Returns 200 OK or 204 No Content on success</li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold mb-2">Example PUT Request:</h3>
+                    <pre><code>PUT https://jsonplaceholder.typicode.com/posts/1
+Content-Type: application/json
+
+{
+    "id": 1,
+    "title": "Updated Post",
+    "body": "This post has been updated",
+    "userId": 1
+}</code></pre>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">DELETE Requests</h2>
+                    <p class="mb-4">
+                        DELETE requests are used to remove resources from the server. Like PUT, they are also idempotent.
+                    </p>
+                    
+                    <h3 class="text-xl font-semibold mb-2">Key Characteristics:</h3>
+                    <ul class="list-disc pl-6 space-y-2 mb-4">
+                        <li>Removes the specified resource</li>
+                        <li>Idempotent (safe to retry)</li>
+                        <li>Returns 204 No Content on success</li>
+                        <li>May return 404 if resource doesn't exist</li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold mb-2">Example DELETE Request:</h3>
+                    <pre><code>DELETE https://jsonplaceholder.typicode.com/posts/1</code></pre>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">PUT vs PATCH</h2>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full">
+                            <thead>
+                                <tr class="bg-gray-100">
+                                    <th class="py-2 px-4">Feature</th>
+                                    <th class="py-2 px-4">PUT</th>
+                                    <th class="py-2 px-4">PATCH</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="py-2 px-4">Purpose</td>
+                                    <td class="py-2 px-4">Update entire resource</td>
+                                    <td class="py-2 px-4">Update partial resource</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-4">Data Required</td>
+                                    <td class="py-2 px-4">Complete resource</td>
+                                    <td class="py-2 px-4">Only changed fields</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 px-4">Idempotent</td>
+                                    <td class="py-2 px-4">Yes</td>
+                                    <td class="py-2 px-4">Not necessarily</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h2 class="text-2xl font-semibold mb-4">Practical Exercise</h2>
+                    <p class="mb-4">Using Insomnia, practice PUT and DELETE requests:</p>
+                    <ol class="list-decimal pl-6 space-y-2">
+                        <li>Create a new post using POST</li>
+                        <li>Update the post using PUT</li>
+                        <li>Delete the post using DELETE</li>
+                        <li>Try to update a non-existent post</li>
+                        <li>Try to delete a non-existent post</li>
+                    </ol>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h2 class="text-2xl font-semibold mb-4">Practice Questions</h2>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-blue-800 mb-2">Multiple Choice</h3>
+                            <div class="space-y-4">
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">1. Which HTTP method is used to completely replace a resource?</p>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q1" class="mr-2">
+                                            A. PATCH
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q1" class="mr-2">
+                                            B. PUT
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q1" class="mr-2">
+                                            C. POST
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">2. What is the typical response code for a successful DELETE request?</p>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q2" class="mr-2">
+                                            A. 200 OK
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q2" class="mr-2">
+                                            B. 204 No Content
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q2" class="mr-2">
+                                            C. 201 Created
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-green-800 mb-2">True/False</h3>
+                            <div class="space-y-4">
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">3. PUT requests are idempotent.</p>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q3" class="mr-2">
+                                            True
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q3" class="mr-2">
+                                            False
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">4. DELETE requests can have a request body.</p>
+                                    <div class="space-y-2">
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q4" class="mr-2">
+                                            True
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input type="radio" name="q4" class="mr-2">
+                                            False
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-purple-50 p-4 rounded-lg">
+                            <h3 class="text-xl font-semibold text-purple-800 mb-2">Practical Exercise</h3>
+                            <div class="space-y-4">
+                                <div class="p-3 bg-white rounded shadow">
+                                    <p class="font-semibold mb-2">5. Using Insomnia, perform the following tasks:</p>
+                                    <div class="space-y-2">
+                                        <p class="text-sm text-gray-600">a) Make a PUT request to https://jsonplaceholder.typicode.com/posts/1 with the following body:</p>
+                                        <pre class="bg-gray-100 p-2 rounded text-sm">{
+    "title": "Updated Title",
+    "body": "Updated body content",
+    "userId": 1
+}</pre>
+                                        <p class="text-sm text-gray-600">What status code did you receive?</p>
+                                        <input type="number" class="border rounded p-2 w-24" placeholder="Status code">
+                                        <p class="text-sm text-gray-600">b) Make a DELETE request to https://jsonplaceholder.typicode.com/posts/1</p>
+                                        <input type="number" class="border rounded p-2 w-24" placeholder="Status code">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" onclick="checkAnswers()">
+                            Check Answers
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
